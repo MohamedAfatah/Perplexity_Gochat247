@@ -1,0 +1,18 @@
+name: pipline
+on:
+  push:
+    branches:
+      - main
+      - master
+
+jobs:
+  build:
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4  # Check out your code
+
+      - name: running new app version
+        run: docker compose up -d --build
+
+      - name: Print a Welcome Message
+        run: echo " New changes detected! Starting workflow..."
